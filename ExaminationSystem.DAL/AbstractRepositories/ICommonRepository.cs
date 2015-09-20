@@ -13,5 +13,6 @@ namespace ExaminationSystem.DAL.AbstractRepositories
         void Add(TEntity entity);
         bool Update(TEntity entity);
         bool Delete(int id);
+        TEntity Get(int id);
     }
 }

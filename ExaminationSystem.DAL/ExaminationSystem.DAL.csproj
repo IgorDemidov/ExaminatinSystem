@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRepositories\CommonRepositoryAbstract.cs" />
+    <Compile Include="ConcreteRepositories\CommonRepository.cs" />
     <Compile Include="AbstractRepositories\ICommonRepository.cs" />
+    <Compile Include="AbstractRepositories\IQuestionRepository.cs" />
     <Compile Include="AbstractRepositories\IThemeRepository.cs" />
+    <Compile Include="ConcreteRepositories\QuestionRepository.cs" />
     <Compile Include="ConcreteRepositories\ThemeRepository.cs" />
     <Compile Include="Entities\Answer.cs" />
     <Compile Include="Entities\ExamContext.cs" />

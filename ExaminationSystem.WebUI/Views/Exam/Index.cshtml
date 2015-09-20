@@ -1,0 +1,17 @@
+﻿@using ExaminationSystem.WebUI.ViewModels;
+@model List<ThemeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List:</h2>
+
+<ol>
+    @foreach (var tvm in Model)
+    {
+        <li>@Html.ActionLink(tvm.Name,"Theme","Exam",new {id=tvm.Id}, null)</li>
+    }
+</ol>
+
+

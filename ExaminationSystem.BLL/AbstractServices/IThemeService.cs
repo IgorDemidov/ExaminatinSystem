@@ -4,12 +4,14 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExaminationSystem.BLL.Models;
 
 namespace ExaminationSystem.BLL.AbstractServices
 {
     public interface IThemeService
     {
-        int GetCount();
-        int GetThemeQuestionsCount(int themeId);
+        List<ThemeModel> GetThemeModelsList();
+        ThemeModel Get(int id);
+        int GetQuestionsCount(int id);
     }
 }

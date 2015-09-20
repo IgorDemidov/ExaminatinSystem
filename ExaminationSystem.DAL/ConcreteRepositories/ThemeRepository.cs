@@ -10,7 +10,7 @@ using ExaminationSystem.DAL.Entities;
 
 namespace ExaminationSystem.DAL.ConcreteRepositories
 {
-    public class ThemeRepository: CommonRepositoryAbstract<Theme>, IThemeRepository
+    public class ThemeRepository: CommonRepository<Theme>, IThemeRepository
     {
         public List<Theme> GetList()
         {
@@ -22,12 +22,22 @@ namespace ExaminationSystem.DAL.ConcreteRepositories
             return tList;
         }
 
-        public Theme Get(int id)
+        public override Theme Get(int id)
         {
             Theme result;
             using (var context = new ExamContext())
             {
-                result = context.Themes.Include(t=>t.Questions).FirstOrDefault(t=>t.Id==id);
+                result = context.Themes.Find(id);
+            }
+            return result;
+        }
+
+        public int GetQuestionCount(int id)
+        {
+            int result;
+            using (var context = new ExamContext())
+            {
+                result = context.Questions.Count(q=>q.ThemeId==id);
             }
             return result;
         }

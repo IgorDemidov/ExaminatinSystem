@@ -1,0 +1,14 @@
+﻿@model ExaminationSystem.WebUI.ViewModels.QuestionViewModel
+
+<div id="question-content">
+    <input id="current-question-id" type="hidden" value="@Model.Id"/>
+    <fieldset >
+        <legend>@Model.Text</legend>
+        <ul>
+            @foreach (var a in Model.Answers)
+            {
+                <li><input data-id="@a.Id" type="checkbox" name="check-@a.Id"/> <label for="check-@a.Id">@a.Text</label></li>
+            }            
+        </ul>
+    </fieldset>
+</div>

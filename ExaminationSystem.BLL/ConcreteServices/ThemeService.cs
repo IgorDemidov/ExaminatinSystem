@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExaminationSystem.BLL.AbstractServices;
+using ExaminationSystem.BLL.Mappers;
 using ExaminationSystem.BLL.Models;
 using ExaminationSystem.DAL.AbstractRepositories;
 using ExaminationSystem.DAL.ConcreteRepositories;
@@ -24,22 +25,20 @@ namespace ExaminationSystem.BLL.ConcreteServices
         {
             this.repository = repository;
         }
-        
-        public int GetCount()
+
+        public List<ThemeModel> GetThemeModelsList()
         {
-            return repository.GetList().Count;
+            return repository.GetList().Select(t => t.ToThemeModel()).ToList();
         }
 
-        public int GetThemeQuestionsCount(int themeId)
+        public ThemeModel Get(int id)
         {
-            return repository.Get(themeId).Questions.Count;
+            return repository.Get(id).ToThemeModel();
         }
 
-        public List<ThemeModel> GetThemesModelsList()
+        public int GetQuestionsCount(int id)
         {
-            return null;
+            return repository.GetQuestionCount(id);
         }
-
-        
     }
 }

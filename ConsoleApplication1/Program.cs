@@ -13,24 +13,15 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             ThemeRepository themeRep = new ThemeRepository();
+            QuestionRepository questRep = new QuestionRepository();
 
-            //themeRep.AddTheme(new Theme() { Name = "ThemeName1" });
-            //themeRep.AddTheme(new Theme() { Name = "ThemeName2" });
-            //themeRep.AddTheme(new Theme() { Name = "ThemeName3" });
-            //themeRep.AddTheme(new Theme() { Name = "ThemeName4" });
-
-            Theme theme = new Theme()
+            Question q = new Question()
             {
-                Id = 10,
-                Name = "Updated 4"
+                Text = "question qqq",
+                ThemeId=11,
             };
-            themeRep.UpdateTheme(theme);
-            List<Theme> tList = themeRep.GetThemesList();
-            foreach (var t in tList)
-            {
-                Console.WriteLine("id: {0}", t.Id);
-                Console.WriteLine(">   {0}", t.Name);
-            }
+            questRep.Add(q);
+
             Console.ReadKey();
         }
     }

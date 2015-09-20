@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExaminationSystem.BLL", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExaminationSystem.DR", "ExaminationSystem.DR\ExaminationSystem.DR.csproj", "{E45C4911-4559-4A63-B81A-48EB74D29135}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExaminationSystem.WebUI", "ExaminationSystem.WebUI\ExaminationSystem.WebUI.csproj", "{AEE2B939-DB2B-4FFF-95B0-6B7D8CEA2006}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E45C4911-4559-4A63-B81A-48EB74D29135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E45C4911-4559-4A63-B81A-48EB74D29135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E45C4911-4559-4A63-B81A-48EB74D29135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE2B939-DB2B-4FFF-95B0-6B7D8CEA2006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE2B939-DB2B-4FFF-95B0-6B7D8CEA2006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE2B939-DB2B-4FFF-95B0-6B7D8CEA2006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE2B939-DB2B-4FFF-95B0-6B7D8CEA2006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
