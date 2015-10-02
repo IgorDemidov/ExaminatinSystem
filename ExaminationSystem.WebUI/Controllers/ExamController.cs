@@ -18,9 +18,10 @@ namespace ExaminationSystem.WebUI.Controllers
         //
         // GET: /Exam/
 
-        ThemeService themeService = new ThemeService();
-        QuestionService questionService = new QuestionService();
-
+        private ThemeService themeService = new ThemeService();
+        private QuestionService questionService = new QuestionService();
+        private CheckService checkService = new CheckService(); 
+        private StatsService statsSevice = new StatsService();
 
         public ActionResult Index()
         {
@@ -28,18 +29,36 @@ namespace ExaminationSystem.WebUI.Controllers
             return View(models);
         }
 
-        public ActionResult Theme(int id)
+        public ActionResult ThemesList()
         {
-            ThemeViewModel model = themeService.Get(id).ToViewModel(themeService.GetQuestionsCount(id));
-            return View(model);
+            ViewBag.Title = "Themes";
+            List<ThemeViewModel> themesList = themeService.GetThemeModelsList().Select(t => t.ToViewModel()).ToList();
+            return PartialView("_ThemesList",themesList);
         }
 
-        public ActionResult NextQuestion(int themeId, int currentId=0)
+        public ActionResult ThemeExam(int themeId)
         {
-            QuestionViewModel model = questionService.GetNextQuestion(themeId,currentId).ToViewModel();
+            ThemeViewModel theme = themeService.Get(themeId).ToViewModel();
+            List<QuestionModel> questionModels = questionService.GetQuestions(themeId).ToList();
+            Session["clue"] = checkService.GenerateClue(themeId, questionModels);
 
-            return PartialView("_Question",model);
+            List<QuestionViewModel> questionViewModels = questionModels.Select(q => q.ToViewModel()).ToList();
+
+            ExamSetViewModel examSet = new ExamSetViewModel(theme, questionViewModels);
+            return PartialView("_ThemeExam", examSet);
         }
+
+        [HttpPost]
+        public ActionResult ExamResult(string themeName, int[] selectedAnswers)
+        {
+            ExamClue clue= (ExamClue)Session["clue"];
+            Session["clue"] = null;
+            ExamResultModel examResult = checkService.Check(clue, selectedAnswers);
+            statsSevice.SaveResult(examResult);
+
+            return PartialView("_ExamResult", examResult.ToViewModel(themeName));
+        }
+
 
     }
 }

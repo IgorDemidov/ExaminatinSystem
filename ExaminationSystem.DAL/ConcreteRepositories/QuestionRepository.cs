@@ -11,6 +11,18 @@ namespace ExaminationSystem.DAL.ConcreteRepositories
 {
     public class QuestionRepository: CommonRepository<Question>
     {
+        public List<Question> GetQuestions(int themeId)
+        {
+            List<Question> questions;
+            using (var context = new ExamContext())
+            {
+                questions = context.Questions.Include(q => q.Answers).Where(q => q.ThemeId == themeId).ToList();
+            }
+            return questions;
+        }
+
+
+        //not use
         public override Question Get(int id)
         {
             Question question;

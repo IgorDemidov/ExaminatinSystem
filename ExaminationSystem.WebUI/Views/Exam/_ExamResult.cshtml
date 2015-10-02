@@ -1,0 +1,65 @@
+﻿@using ExaminationSystem.WebUI.ViewModels
+@model ExamResultViewModel
+
+
+
+<div>
+    <table class="result-table">
+        <caption>@Model.ThemeName</caption>
+        <thead>
+        <tr>
+            <th colspan="2">Questions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            int n = 1;
+        }
+        @foreach (bool isCorrect in Model.CorrectnessDictionary.Values)
+        {
+            if (isCorrect)
+            {
+                <tr>
+                    <td>@n</td>
+                    <td>OK</td>
+                </tr>
+            }
+            else
+            {
+                <tr class="result-fail">
+                    <td>@n</td>
+                    <td>Fail</td>
+                </tr>
+            }
+
+            {
+                n++;
+            }
+        }
+        </tbody>
+    </table>
+
+    <table class="result-table">
+        <thead>
+        <tr>
+            <th colspan="2">Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Grade:</td>
+            <td>@Model.LetterGrade</td>
+        </tr>
+        <tr>
+            <td>In percent</td>
+            <td>@Model.PercentGrade</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    document.title = "Result";
+    document.getElementById("content-title").innerHTML += ": Result";
+</script>

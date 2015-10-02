@@ -16,14 +16,12 @@ namespace ExaminationSystem.BLL.ConcreteServices
     {
         private QuestionRepository repository = new QuestionRepository();
 
-        public QuestionService()
-        {
 
+        public List<QuestionModel> GetQuestions(int themeId)
+        {
+            return repository.GetQuestions(themeId).Select(q => q.ToQuestionModel()).ToList();
         }
 
-        public QuestionModel GetNextQuestion(int themeId, int currentId)
-        {
-            return repository.GetNextQuestion(themeId, currentId).ToQuestionModel();
-        }
+        
     }
 }

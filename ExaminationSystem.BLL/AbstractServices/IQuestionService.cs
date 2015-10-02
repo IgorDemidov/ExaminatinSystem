@@ -9,6 +9,5 @@ namespace ExaminationSystem.BLL.AbstractServices
 {
     public interface IQuestionService
     {
-        QuestionModel GetNextQuestion(int themeId, int currentId);
     }
 }

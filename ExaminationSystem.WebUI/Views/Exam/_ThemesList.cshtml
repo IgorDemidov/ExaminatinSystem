@@ -1,0 +1,27 @@
+﻿@using ExaminationSystem.WebUI.HtmlHelpers
+@using ExaminationSystem.WebUI.ViewModels
+@model List<ThemeViewModel>
+
+
+<nav id="themes-list" class="menu row">
+    <ul class="a-narrow">
+        @foreach (var t in Model)
+        {
+            <li>
+                @Ajax.CustomActionLink(t.Name, "ThemeExam", "Exam", new {themeId = t.Id})
+            </li>
+        }
+    </ul>
+</nav>
+
+<script>
+    document.title = "Themes";
+    document.getElementById("content-title").innerHTML = "Themes";
+</script>
+
+
+
+
+
+
+

@@ -22,6 +22,7 @@ namespace ExaminationSystem.DAL.ConcreteRepositories
             return tList;
         }
 
+        //not use
         public override Theme Get(int id)
         {
             Theme result;

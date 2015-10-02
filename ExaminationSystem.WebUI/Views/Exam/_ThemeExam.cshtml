@@ -1,0 +1,74 @@
+﻿@using ExaminationSystem.WebUI.HtmlHelpers
+@using ExaminationSystem.WebUI.ViewModels
+@model ExamSetViewModel
+
+
+<div>
+
+    @{
+        int i;
+        int j;
+        int n;
+        AjaxOptions ajaxOptions = new AjaxOptions()
+        {
+            LoadingElementId = "loading-indicator",
+            UpdateTargetId = "content",
+            Url = Url.Action("ExamResult", "Exam")
+        };
+    }
+    @using (Ajax.BeginForm(ajaxOptions))
+    {
+        <div id="theme-timer-finish">
+
+            <div>
+                <h4>@Model.Theme.Name</h4>
+            </div>
+
+            <div id="timer" class="timer">
+                <span>12:45</span>
+            </div>
+
+            <div>
+                <input class="btn-simple" type="submit" value="Finish"/>
+            </div>
+
+            @*<div style="clear: both"></div>*@
+        </div>
+
+        <div id="timerbar" class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                <span class="sr-only">40% Complete (success)</span>
+            </div>
+        </div>
+
+        <input type="hidden" value="@Model.Theme.Name" name="themeName"/>
+        for (i = 0, n = 1; i < Model.Questions.Count; i++, n = i + 1)
+        {
+            <div id="q-@n">
+                <p>@Model.Questions[i].Text</p>
+                <ul>
+                    @for (j = 0; j < Model.Questions[i].Answers.Count; j++)
+                    {
+                        <li>
+                            <input id="check-@i-@j"
+                                   type="checkbox"
+                                   name="selectedAnswers"
+                                   value="@Model.Questions[i].Answers[j].Id"/>
+                            <label for="check-@i-@j">
+                                @Model.Questions[i].Answers[j].Text
+                            </label>
+                        </li>
+                    }
+                </ul>
+
+            </div>
+        }
+
+    }
+
+</div>
+
+<script>
+    document.title = "Exam";
+    document.getElementById("content-title").innerHTML = "Exam";
+</script>

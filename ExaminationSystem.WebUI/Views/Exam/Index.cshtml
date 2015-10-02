@@ -1,17 +1,71 @@
-﻿@using ExaminationSystem.WebUI.ViewModels;
+﻿@using ExaminationSystem.WebUI.HtmlHelpers
+@using ExaminationSystem.WebUI.ViewModels;
 @model List<ThemeViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.title = "Welcome";
 }
 
-<h2>List:</h2>
 
-<ol>
-    @foreach (var tvm in Model)
-    {
-        <li>@Html.ActionLink(tvm.Name,"Theme","Exam",new {id=tvm.Id}, null)</li>
-    }
-</ol>
+<main class="row">
+
+    <aside class="col-md-2">
+
+        <header class="row user-info">
+            <img class="photo-min hidden-xs" src="/Content/app/images/ava_none.png" alt="Photo">
+            <h4 class="col-md-12 ">Igor Demidov</h4>
+        </header>
+
+        <hr />
+
+        <nav id="menu" class="menu row">
+            <p></p>
+            <div>
+                <ul>
+                    <li>@Ajax.CustomActionLink("Themes", "ThemesList", "Exam")</li>
+                    <li>@Ajax.CustomActionLink("Statistics", "ThemesList", "Exam")</li>
+                    <li>@Ajax.CustomActionLink("Help", "ThemesList", "Exam")</li>
+                    <li>@Ajax.CustomActionLink("Exit", "ThemesList", "Exam")</li>
+                </ul>
+            </div>
+        </nav>
+
+    </aside>
+
+    <section id="content-form" class="col-md-10">
+        <header class="content-header">
+            <h3 id="content-title" style="display: inline;"></h3>
+            <img id="loading-indicator" src="/Content/app/images/loading.gif" style="display: none; height: 10px;" />
+            <hr />
+        </header>
+
+
+        <div class="content-wrapper">
+            <div id="content">
+                <h4>Good day!</h4>
+                <p>Nice time for an exam yourself in English!
+                <p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    document.title = "Welcome";
+    document.getElementById("content-title").innerHTML = "Welcome";
+</script>
+
+@section scripts
+{
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+
+
+
+
+
+
 
 

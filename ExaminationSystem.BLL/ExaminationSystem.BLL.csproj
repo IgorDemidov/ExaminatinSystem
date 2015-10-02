@@ -41,8 +41,13 @@
   <ItemGroup>
     <Compile Include="AbstractServices\IQuestionService.cs" />
     <Compile Include="AbstractServices\IThemeService.cs" />
+    <Compile Include="ConcreteServices\CheckService.cs" />
     <Compile Include="ConcreteServices\QuestionService.cs" />
+    <Compile Include="ConcreteServices\StatsService.cs" />
     <Compile Include="ConcreteServices\ThemeService.cs" />
+    <Compile Include="Models\ExamClue.cs" />
+    <Compile Include="Models\ExamResultModel.cs" />
+    <Compile Include="Models\GradingScale.cs" />
     <Compile Include="Models\Mappers.cs" />
     <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />

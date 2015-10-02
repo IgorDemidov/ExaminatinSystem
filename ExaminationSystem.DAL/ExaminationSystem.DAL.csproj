@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractRepositories\IAnswerRepository.cs" />
+    <Compile Include="ConcreteRepositories\AnswerRepository.cs" />
     <Compile Include="ConcreteRepositories\CommonRepository.cs" />
     <Compile Include="AbstractRepositories\ICommonRepository.cs" />
     <Compile Include="AbstractRepositories\IQuestionRepository.cs" />

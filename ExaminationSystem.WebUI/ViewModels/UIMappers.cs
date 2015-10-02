@@ -41,5 +41,17 @@ namespace ExaminationSystem.WebUI.ViewModels
             };
             return viewModel;
         }
+
+        public static ExamResultViewModel ToViewModel(this ExamResultModel model, string themeName)
+        {
+            ExamResultViewModel viewModel = new ExamResultViewModel
+            {
+                ThemeName = themeName,
+                CorrectnessDictionary = model.QuestionsCorrectnessDictionary,
+                LetterGrade = model.LetterGrade,
+                PercentGrade = model.PercentGrade
+            };
+            return viewModel;
+        }
     }
 }

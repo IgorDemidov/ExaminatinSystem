@@ -1,61 +1,216 @@
-﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+/* https://www.colorcodehex.com/online-color-mixer.html */
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("/Content/app/fonts/Ubuntu-R.ttf");
 }
 
-header, footer, nav, section {
+@font-face {
+    font-family: GeomaRegularDemo;
+    src: url("/Content/app/fonts/GeomaRegularDemo.otf") format("opentype");
+}
+
+body {
+    background-color: #252830;
+    color: #cfd2da;
+    font-family: Ubuntu, Arial, sans-serif;
+}
+
+a:focus {
+    outline:none;
+    background-color: #434857;
+    color: #ffffff;
+}
+
+  
+aside, section{
+  padding:8px;
+}
+
+hr{
+  border-top: 1px solid #434857;
+  margin: 0;
+}
+
+footer{
+  background-color: #434857;
+  font-size: .9rem;
+  bottom: 0;
+  left:0;
+  right: 0;
+  margin:0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;    
+  text-align: center;
+}
+
+.logo{
+  margin: 8px 0 10px 0;
+}
+
+.logo *{
+  display:inline;
+  height: 40px;
+  vertical-align: middle;
+  font-family: GeomaRegularDemo, Arial, sans-serif;
+}
+
+.user-info{
+  text-align: center;
+}
+
+.photo-min{
+  width: 80%;
+  max-width: 156px;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.bordered{
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.menu ul{
+    list-style: none;
+    padding: 0;
+}
+
+.menu li a{
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-decoration: none;
+  display:block;
+  color: #cfd2da; 
+  padding: 8px;
+}
+
+.menu li a:hover{
+  background-color: #434857;
+  color: #ffffff;
+}
+
+.menu li a:active{
+  background-color: #1ca8dd;
+}
+
+.content-wrapper{
+  margin-top: 30px;
+  text-indent: 1.5em;
+  text-align: justify;
+}
+
+.a-narrow li a{
+    padding: 0;
+}
+
+
+/*  .reusult-table
+-----------------------------------[Begin]-----------------------------------*/
+
+.result-table{
+    border-collapse: separate;
+    border: 1px solid;
+    border-radius: 4px;
+    border-spacing: 0;
+    min-width: 150px;
+    margin: 8px;
+}
+
+.result-table tbody td{
+    border-top: 1px solid;
+}
+
+.result-table, .result-table tbody td{
+    border-color: #434857;
+}
+
+.result-table th{
+    color: #ffffff;
+    background-color: #434857;
+    text-align: left;
+    padding: 4px 12px;
+}
+
+.result-table tr td:first-child {
+    text-align: left;
+    padding: 4px 12px;
+}
+
+.result-table tr td:last-child {
+    text-align: right;
+    padding: 4px 12px;
+}
+
+/* status */
+
+.result-fail{
+    background-color: #700E17;/*#e64759*/
+}
+/*
+.result-ok{
+    background-color: #254844; #1bc98e
+}*/
+
+/*status*/
+
+/*  .reusult-ul  
+------------------------------------[end]------------------------------------*/
+
+
+
+/*  #theme-timer-finish , .progress
+-----------------------------------[Begin]-----------------------------------*/
+div#theme-timer-finish {
     display: block;
+    vertical-align: middle;
+    margin: 0 0 8px 0;
+}
+
+div#theme-timer-finish > div{
+    display: inline-block;
+    text-align: center;
+    text-indent: 0;
+    
 }
 
 
-/* Styles for basic forms
------------------------------------------------------------*/
-fieldset {
-    border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+.progress {
+    height: 2px;
+    background-color: #434857;
 }
 
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
+.progress-bar-success {
+    background-color: #1ca8dd;
 }
-
-textarea {
-    min-height: 75px;
-}
-
-.editor-label {
-    margin: 1em 0 0 0;
-}
-
-.editor-field {
-    margin: 0.5em 0 0 0;
-}
+/*  #timer-finish  
+------------------------------------[end]------------------------------------*/
 
 
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
-    color: #f00;
+.btn-simple {
+    background-color: transparent;
+    border: 1px solid #1ca8dd;
+    border-radius: 4px;
+    color: #1ca8dd;
+    padding: 0px 12px;
 }
 
-.field-validation-valid {
-    display: none;
+.btn-simple:hover {
+    background-color: #1ca8dd;
+    color: #000;
 }
 
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
+.timer {
+    border: 0px solid transparent;
+    background-color: #7D859B;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0 4px;
 }
 
-.validation-summary-errors {
-    font-weight: bold;
-    color: #f00;
+ul {
+    list-style: none;
+    padding-left: 16px;
 }
 
-.validation-summary-valid {
-    display: none;
-}
