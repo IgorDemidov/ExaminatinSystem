@@ -9,13 +9,13 @@ namespace ExaminationSystem.WebUI.ViewModels
 {
     public static class UIMappers
     {
-        public static ThemeViewModel ToViewModel(this ThemeModel model, int questionsCount=0)
+        public static ThemeViewModel ToViewModel(this ThemeModel model)
         {
             ThemeViewModel viewModel = new ThemeViewModel
             {
                 Id = model.Id,
                 Name = model.Name,
-                QuestionsCount = questionsCount
+                Time = model.Time
             };
 
             return viewModel;

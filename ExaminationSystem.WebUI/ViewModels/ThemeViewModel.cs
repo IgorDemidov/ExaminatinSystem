@@ -9,6 +9,6 @@ namespace ExaminationSystem.WebUI.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int QuestionsCount { get; set; }
+        public int Time { get; set; }
     }
 }

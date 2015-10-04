@@ -12,6 +12,7 @@ namespace ExaminationSystem.DAL.Entities
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Time { get; set; }
 
         public List<Question> Questions { get; set; }
     }

@@ -4,7 +4,6 @@
 
 
 <div>
-
     @{
         int i;
         int j;
@@ -24,19 +23,18 @@
                 <h4>@Model.Theme.Name</h4>
             </div>
 
-            <div id="timer" class="timer">
-                <span>12:45</span>
+            <div class="timer">
+                <span id="timer">12:45</span>
             </div>
 
             <div>
-                <input class="btn-simple" type="submit" value="Finish"/>
+                <input id="submit-btn" class="btn-simple" type="submit" value="Finish"/>
             </div>
 
-            @*<div style="clear: both"></div>*@
         </div>
 
         <div id="timerbar" class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+            <div id="timer-progress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                 <span class="sr-only">40% Complete (success)</span>
             </div>
         </div>
@@ -63,7 +61,6 @@
 
             </div>
         }
-
     }
 
 </div>
@@ -71,4 +68,61 @@
 <script>
     document.title = "Exam";
     document.getElementById("content-title").innerHTML = "Exam";
+    document.getElementById("timer-progress").style.transition = "width 1s linear 0s";
+    
+    var Timer = function(sec, timerId, progressId, funcTimeIsUp) {
+        this.total = sec;
+        this.reminder = sec;
+        this.percent = 0;
+        this.onTimeIsUp = funcTimeIsUp;
+        var that = this;
+        this.start = function() {
+            document.getElementById(timerId).innerHTML = formatTime(that.reminder);
+            that.percent = (1 - that.reminder / that.total) * 100;
+            document.getElementById(progressId).style.width = that.percent + "%";
+            if (that.reminder === 0) {
+                that.onTimeIsUp();
+                return;
+            }
+            if (that.percent > 75) {
+                twinkleRed(progressId);
+            }
+            setTimeout(function() {
+                that.reminder--;
+                that.start();
+            }, 1000);
+        }
+        function formatTime(timeSec) {
+            var h = Math.floor(timeSec / 3600);
+            var m = Math.floor((timeSec - h * 3600) / 60);
+            var s = timeSec - m * 60 - h * 3600;
+            h = (h < 10) ? ("0" + h) : h;
+            m = (m < 10) ? ("0" + m) : m;
+            s = (s < 10) ? ("0" + s) : s;
+            return h + ":" + m + ":" + s;
+        }
+        function twinkleRed(id) {
+            var element = document.getElementById(id);
+            var baseColor = element.style.backgroundColor;
+            element.style.backgroundColor = "#e64c65";
+            setTimeout(function () { element.style.backgroundColor = baseColor; }, 500);
+        }
+    }
+
+    function addHiddenInput(name, value) {
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.value = value;
+        input.name = name;
+        document.forms["form0"].appendChild(input);
+    }
+
+    function customAjaxSubmit() {
+        addHiddenInput("timerReminder", window.timer.current);
+        document.getElementById("submit-btn").click();
+    }
+
+    var timer = new Timer(parseInt(@Model.Theme.Time), "timer", "timer-progress", customAjaxSubmit());
+    timer.start();
+
 </script>

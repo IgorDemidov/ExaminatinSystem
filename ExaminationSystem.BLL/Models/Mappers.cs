@@ -16,7 +16,8 @@ namespace ExaminationSystem.BLL.Mappers
             {
                 Id = theme.Id,
                 Name = theme.Name,
-                QuestionModels = null
+                QuestionModels = null,
+                Time = theme.Time
             };
 
             if ((theme.Questions != null) && (includeQuestions))

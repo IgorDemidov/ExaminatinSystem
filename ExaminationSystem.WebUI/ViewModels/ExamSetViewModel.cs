@@ -10,12 +10,11 @@ namespace ExaminationSystem.WebUI.ViewModels
     {
         public ExamSetViewModel(ThemeViewModel theme, List<QuestionViewModel> questions)
         {
-           Theme = theme;
-           Questions = questions;
+            Theme = theme;
+            Questions = questions;
         }
 
         public ThemeViewModel Theme { get; private set; }
-
         public List<QuestionViewModel> Questions { get; private set; }
     }
 }
