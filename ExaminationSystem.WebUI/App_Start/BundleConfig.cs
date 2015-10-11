@@ -24,21 +24,15 @@ namespace ExaminationSystem.WebUI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-           // bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
             
             //Begin My
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/app/css/normalize.css",
                 "~/Content/app/css/bootstrap.css",
                 "~/Content/site.css"));
-            /*
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Content/app/js/jquery.min.js"));
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Content/app/js/bootstrap.js"));
+
             //End My
-            */
             
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

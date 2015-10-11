@@ -1,0 +1,49 @@
+﻿@using ExaminationSystem.WebUI.ViewModels.Account;
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-body"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="login-form">
+            <img src="/Content/app/images/login.png" alt="Login" height="50"/>
+            <ul>
+                <li>
+                    <div class="tb-login">
+                        @Html.TextBoxFor(m => m.UserName)
+                    </div>
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    <div class="tb-password">
+                        @Html.PasswordFor(m => m.Password)
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+                <li id="rememberme">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </li>
+            </ul>
+            <input class="btn-simple login-btn" type="submit" value="Log in"/>
+
+            <div class="text-align-right">
+                @Html.ActionLink("Create account", "Register")
+            </div>
+        </div>
+    }
+</section>
+
+<script>
+    styleCheckboxes();
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

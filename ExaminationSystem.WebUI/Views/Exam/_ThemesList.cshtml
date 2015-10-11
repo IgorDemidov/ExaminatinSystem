@@ -8,7 +8,7 @@
         @foreach (var t in Model)
         {
             <li>
-                @Ajax.CustomActionLink(t.Name, "ThemeExam", "Exam", new {themeId = t.Id})
+                @Ajax.CustomActionLink(t.Name, "ThemeExamInfo", "Exam", new {themeId = t.Id})
             </li>
         }
     </ul>

@@ -123,18 +123,30 @@
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.30506.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\AjaxCustomActionLinkHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
     <Compile Include="ViewModels\AnswerViewModel.cs" />
     <Compile Include="ViewModels\ExamResultViewModel.cs" />
     <Compile Include="ViewModels\ExamSetViewModel.cs" />
@@ -146,12 +158,16 @@
     <Content Include="Content\app\css\bootstrap-theme.css" />
     <Content Include="Content\app\css\bootstrap.css" />
     <Content Include="Content\app\css\normalize.css" />
+    <Content Include="Content\app\images\eslogo.png" />
+    <Content Include="Content\app\images\icons-sprite.png" />
     <Content Include="Content\app\images\loading.gif" />
+    <Content Include="Content\app\images\login.png" />
+    <Content Include="Content\app\images\my_checkbox.png" />
+    <Content Include="Content\app\images\transp.png" />
     <Content Include="Content\app\js\jquery.min.js" />
     <Content Include="Content\site.css" />
     <Content Include="Content\app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\app\images\ava_none.png" />
-    <Content Include="Content\app\images\logo.png" />
     <Content Include="Content\app\js\bootstrap.js" />
     <Content Include="Content\app\js\bootstrap.min.js" />
     <Content Include="Content\app\js\npm.js" />
@@ -219,6 +235,7 @@
     <Content Include="Content\app\fonts\Iceland-Regular.ttf" />
     <Content Include="Content\app\fonts\GeomaRegularDemo.otf" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\app\styleCheckboxes.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -234,7 +251,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -248,7 +267,10 @@
     <Content Include="Views\Exam\Index.cshtml" />
     <Content Include="Views\Exam\_ThemesList.cshtml" />
     <Content Include="Views\Exam\_ThemeExam.cshtml" />
-    <Content Include="Views\Exam\_ExamResult.cshtml" />
+    <Content Include="Views\Exam\_ThemeExamResult.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Exam\_ThemeExamInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,6 +282,10 @@
     <ProjectReference Include="..\ExaminationSystem.BLL\ExaminationSystem.BLL.csproj">
       <Project>{25cc8733-f735-4636-a32f-6a50d7df4791}</Project>
       <Name>ExaminationSystem.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExaminationSystem.DAL\ExaminationSystem.DAL.csproj">
+      <Project>{7697364B-89A9-4778-9A25-D816320B7418}</Project>
+      <Name>ExaminationSystem.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -16,12 +16,19 @@ body {
     font-family: Ubuntu, Arial, sans-serif;
 }
 
+a, a:hover {
+    text-decoration: none;
+}
+
 a:focus {
     outline:none;
     background-color: #434857;
     color: #ffffff;
 }
 
+div {
+    text-indent: 0;
+}
   
 aside, section{
   padding:8px;
@@ -102,7 +109,7 @@ footer{
 }
 
 .a-narrow li a{
-    padding: 0;
+    padding: 0 8px;
 }
 
 
@@ -175,7 +182,6 @@ div#theme-timer-finish > div{
     
 }
 
-
 .progress {
     height: 2px;
     background-color: #434857;
@@ -213,4 +219,136 @@ ul {
     list-style: none;
     padding-left: 16px;
 }
+
+
+
+/*  .login-form
+-----------------------------------[Begin]-----------------------------------*/
+.form-body {
+    text-align: center;
+}
+
+.login-form {
+    display: inline-block;
+    text-align: center;
+    width: 220px;
+    text-align: center;
+}
+
+.login-form img{
+    margin-bottom: 8px;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    border: 1px solid transparent;
+    background-color: #373B47;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
+    padding: 8px 8px 8px 40px;
+}
+
+.tb-login, .tb-password {
+    position: relative;
+}
+
+.tb-login:before, .tb-password:before{
+    content: url("/Content/app/images/transp.png");
+    position: absolute;
+    left: 8px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-image: url("/Content/app/images/icons-sprite.png");
+    background-size: auto 400px;
+}
+
+.tb-login::before {
+    background-position: 44px 383px;
+}
+
+.tb-password::before {
+    background-position: 215px 340px;
+}
+
+
+/*.tb-login:before {
+    content: url("/Content/app/images/transp.png");
+    position: absolute;
+    left: 8px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-image: url("/Content/app/images/icons-sprite.png");
+    background-position: 44px 383px;
+    background-size: auto 400px;
+}
+
+.tb-password:before {
+    content: url("/Content/app/images/transp.png");
+    position: absolute;
+    left: 8px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-image: url("/Content/app/images/icons-sprite.png");
+    background-position: 215px 340px;
+    background-size: auto 400px;
+}*/
+
+
+
+.login-form ul{
+    padding: 0;
+    margin: 0;
+}
+
+.login-form li{
+    padding: 8px 0;
+    margin: 0;
+}
+
+.login-form * span {
+    font-size: 90%;
+    color: #e64c65;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 8px 0;
+    margin-bottom: 8px;
+}
+
+#rememberme {
+    text-align: left;
+    padding-bottom: 8px;
+    font-size: 90%;
+}
+
+#rememberme *{
+    margin: 0;
+    vertical-align: middle;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.inline-block-table-wrapper {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*  .login-form
+------------------------------------[end]------------------------------------*/
+
+/*themeInfo*/
+#start-exam-btn {
+    margin: 0 8px;
+}
+/*themeInfo*/
+
 

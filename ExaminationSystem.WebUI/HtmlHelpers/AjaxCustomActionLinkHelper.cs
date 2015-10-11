@@ -17,6 +17,7 @@ namespace ExaminationSystem.WebUI.HtmlHelpers
             string controllerName,
           //  RouteValueDictionary routeValues=null, 
             object routeValues=null,
+            object htmlAttributes = null,
             string updateTargetId = "content",
             string loadingElementId = "loading-indicator"
             )
@@ -38,7 +39,7 @@ namespace ExaminationSystem.WebUI.HtmlHelpers
             };
            
             AjaxHelper ajaxHelper = new AjaxHelper(ajax.ViewContext, ajax.ViewDataContainer);
-            return ajaxHelper.ActionLink(linkText, actionName, controllerName, routeValues, ajaxOptions);
+            return ajaxHelper.ActionLink(linkText, actionName, controllerName, routeValues, ajaxOptions, htmlAttributes);
 
             //var ajaxAttributes = new 
             //{

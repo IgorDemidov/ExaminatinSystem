@@ -25,7 +25,13 @@
                     <li>@Ajax.CustomActionLink("Themes", "ThemesList", "Exam")</li>
                     <li>@Ajax.CustomActionLink("Statistics", "ThemesList", "Exam")</li>
                     <li>@Ajax.CustomActionLink("Help", "ThemesList", "Exam")</li>
-                    <li>@Ajax.CustomActionLink("Exit", "ThemesList", "Exam")</li>
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+                             {
+                                 @Html.AntiForgeryToken()
+                                 <a href="javascript:document.getElementById('logoutForm').submit()">Exit</a>
+                             }
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -1,0 +1,36 @@
+﻿@using ExaminationSystem.WebUI.HtmlHelpers
+@using ExaminationSystem.WebUI.ViewModels
+@model ThemeViewModel
+
+@helper FormatTime(int timeSec)
+{
+    <span>@TimeSpan.FromSeconds(timeSec).ToString()</span>
+}
+
+<div>
+    <table class="result-table">
+        <thead>
+        <tr>
+            <th colspan="2">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Questions count</td>
+            <td>@ViewBag.Count</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>@FormatTime(Model.Time)</td>
+        </tr>
+        </tbody>
+    </table>
+    @Ajax.CustomActionLink("Start Exam", "ThemeExam", "Exam", new { themeId = @Model.Id }, new { @id = "start-exam-btn", @class = "btn-simple" })
+</div>
+
+
+
+<script>
+    document.title = "@Model.Name" ;
+    document.getElementById("content-title").innerHTML = "@Model.Name";
+</script>

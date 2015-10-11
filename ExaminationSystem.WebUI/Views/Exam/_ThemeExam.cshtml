@@ -12,7 +12,7 @@
         {
             LoadingElementId = "loading-indicator",
             UpdateTargetId = "content",
-            Url = Url.Action("ExamResult", "Exam")
+            Url = Url.Action("ThemeExamResult", "Exam")
         };
     }
     @using (Ajax.BeginForm(ajaxOptions))
@@ -66,9 +66,10 @@
 </div>
 
 <script>
-    document.title = "Exam";
-    document.getElementById("content-title").innerHTML = "Exam";
+    document.title += " - Exam";
+    document.getElementById("content-title").innerHTML += " - Exam";
     document.getElementById("timer-progress").style.transition = "width 1s linear 0s";
+    styleCheckboxes();
     
     var Timer = function(sec, timerId, progressId, funcTimeIsUp) {
         this.total = sec;
@@ -122,7 +123,7 @@
         document.getElementById("submit-btn").click();
     }
 
-    var timer = new Timer(parseInt(@Model.Theme.Time), "timer", "timer-progress", customAjaxSubmit());
+    var timer = new Timer(parseInt(@Model.Theme.Time), "timer", "timer-progress", customAjaxSubmit);
     timer.start();
 
 </script>

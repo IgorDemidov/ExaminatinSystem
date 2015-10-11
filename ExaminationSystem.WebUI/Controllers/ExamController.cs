@@ -9,10 +9,12 @@ using ExaminationSystem.BLL.AbstractServices;
 using ExaminationSystem.WebUI.ViewModels;
 using System.IO;
 using System.Globalization;
+using ExaminationSystem.WebUI.Filters;
 
 
 namespace ExaminationSystem.WebUI.Controllers
 {
+    [Authorize]
     public class ExamController : Controller
     {
         //
@@ -36,6 +38,14 @@ namespace ExaminationSystem.WebUI.Controllers
             return PartialView("_ThemesList",themesList);
         }
 
+        public ActionResult ThemeExamInfo(int themeId)
+        {
+            ThemeViewModel model = themeService.Get(themeId).ToViewModel();
+            ViewBag.Count = themeService.GetQuestionsCount(themeId);
+            
+            return PartialView("_ThemeExamInfo",model);
+        }
+
         public ActionResult ThemeExam(int themeId)
         {
             ThemeViewModel theme = themeService.Get(themeId).ToViewModel();
@@ -49,15 +59,17 @@ namespace ExaminationSystem.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult ExamResult(string themeName, int[] selectedAnswers)
+        public ActionResult ThemeExamResult(string themeName, int[] selectedAnswers)
         {
             ExamClue clue= (ExamClue)Session["clue"];
             Session["clue"] = null;
             ExamResultModel examResult = checkService.Check(clue, selectedAnswers);
             statsSevice.SaveResult(examResult);
 
-            return PartialView("_ExamResult", examResult.ToViewModel(themeName));
+            return PartialView("_ThemeExamResult", examResult.ToViewModel(themeName));
         }
+
+
 
 
     }
